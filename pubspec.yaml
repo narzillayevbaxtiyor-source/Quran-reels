@@ -1,0 +1,104 @@
+name: quran_reels
+description: QuranReels - A TikTok-inspired Quran browsing app with beautiful recitations.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+  flutter: '>=3.16.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # Navigation
+  go_router: ^13.0.0
+
+  # Network
+  dio: ^5.4.0
+  connectivity_plus: ^5.0.2
+
+  # Local Storage
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
+  shared_preferences: ^2.2.2
+
+  # Audio
+  just_audio: ^0.9.36
+  audio_service: ^0.18.12
+
+  # Image Caching
+  cached_network_image: ^3.3.1
+  shimmer: ^3.0.0
+
+  # Firebase
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
+  cloud_firestore: ^4.14.0
+  firebase_storage: ^11.6.0
+  firebase_analytics: ^10.8.0
+  google_sign_in: ^6.2.1
+
+  # UI
+  google_fonts: ^6.1.0
+  flutter_svg: ^2.0.9
+  lottie: ^2.7.0
+  flutter_animate: ^4.3.0
+
+  # Utilities
+  intl: ^0.19.0
+  uuid: ^4.2.2
+  json_annotation: ^4.8.1
+  freezed_annotation: ^2.4.1
+  equatable: ^2.0.5
+  logger: ^2.0.2+1
+  url_launcher: ^6.2.2
+  package_info_plus: ^5.0.1
+  flutter_native_splash: ^2.3.9
+  flutter_launcher_icons: ^0.13.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+  build_runner: ^2.4.7
+  json_serializable: ^6.7.1
+  freezed: ^2.4.7
+  hive_generator: ^2.0.1
+  mockito: ^5.4.4
+  mocktail: ^1.0.1
+  riverpod_generator: ^2.3.9
+
+# Flutter Launcher Icons Configuration
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  adaptive_icon_background: "#1B5E20"
+  adaptive_icon_foreground: "assets/images/app_icon_foreground.png"
+
+# Native Splash Screen
+flutter_native_splash:
+  color: "#1B5E20"
+  image: assets/images/splash_logo.png
+  android: true
+  ios: true
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/
+    - assets/fonts/
+
+  fonts:
+    - family: Uthmani
+      fonts:
+        - asset: assets/fonts/UthmanicHafs1.ttf
+    - family: UthmaniBold
+      fonts:
+        - asset: assets/fonts/UthmanicHafs1_Bold.ttf

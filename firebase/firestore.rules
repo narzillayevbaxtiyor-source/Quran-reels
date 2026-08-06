@@ -1,0 +1,58 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper: check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper: check if the user is accessing their own data
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // ─── Users collection ─────────────────────────────────────────
+    match /users/{userId} {
+      // Users can read any user's basic public profile
+      allow read: if isAuthenticated();
+
+      // Users can only create their own profile
+      allow create: if isOwner(userId)
+                    && request.resource.data.uid == userId;
+
+      // Users can update only their own profile
+      allow update: if isOwner(userId);
+
+      // No user deletion allowed
+      allow delete: if false;
+
+      // ─── User Bookmarks subcollection ──────────────────────────
+      match /bookmarks/{bookmarkId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // ─── User Favorites subcollection ──────────────────────────
+      match /favorites/{favoriteId} {
+        allow read, write: if isOwner(userId);
+      }
+
+      // ─── User Play History subcollection ───────────────────────
+      match /playHistory/{historyId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+
+    // ─── Reciters collection (public read, admin write) ────────────
+    match /reciters/{reciterId} {
+      allow read: if isAuthenticated();
+      allow write: if false; // Admin only via Firebase console
+    }
+
+    // ─── Global counters/analytics (read-only for users) ───────────
+    match /analytics/{document=**} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+  }
+}

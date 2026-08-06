@@ -1,0 +1,36 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Helper: check if the user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // ─── User profile images ───────────────────────────────────────
+    match /users/{userId}/profile/{imageId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated()
+                    && request.auth.uid == userId
+                    && request.resource.size < 5 * 1024 * 1024  // 5MB max
+                    && request.resource.contentType.matches('image/.*');
+    }
+
+    // ─── Public assets (reciter images, backgrounds) ───────────────
+    match /public/{allPaths=**} {
+      allow read: if true;
+      allow write: if false; // Admin only via Firebase console
+    }
+
+    // ─── Audio cache (authenticated users only) ────────────────────
+    match /audio_cache/{allPaths=**} {
+      allow read: if isAuthenticated();
+      allow write: if false;
+    }
+
+    // ─── Default deny ──────────────────────────────────────────────
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

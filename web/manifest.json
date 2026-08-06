@@ -1,0 +1,27 @@
+{
+  "name": "QuranReels",
+  "short_name": "QuranReels",
+  "description": "Qur'on oyatlarini TikTok uslubida ko'ring",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#0D2612",
+  "theme_color": "#1B5E20",
+  "orientation": "portrait",
+  "lang": "uz",
+  "icons": [
+    {
+      "src": "icons/Icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/Icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "lifestyle"],
+  "prefer_related_applications": false
+}

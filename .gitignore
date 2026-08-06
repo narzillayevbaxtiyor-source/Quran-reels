@@ -1,0 +1,45 @@
+# Files to be skipped by the Pub that are managed by other tools.
+#
+# For more information see https://dart.dev/go/dot-gitignore
+
+# IDE files
+.idea/
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Build outputs
+build/
+*.o
+*.lock
+.dart_tool/
+.packages
+.pub/
+
+# Generated
+**/*.g.dart
+**/*.freezed.dart
+**/*.config.dart
+
+# Android
+/android/app/google-services.json
+/android/key.properties
+/android/*.jks
+
+# iOS
+/ios/Pods/
+/ios/Runner/GoogleService-Info.plist
+
+# Firebase
+/firebase/firebase_options.dart
+
+# Local
+local.properties
