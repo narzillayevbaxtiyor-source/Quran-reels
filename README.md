@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # QuranReels
 
 QuranReels - A TikTok-inspired Quran browsing app with beautiful recitations.
@@ -84,3 +85,6 @@ lib/
 ## License
 
 MIT
+=======
+# Quran-reels
+>>>>>>> 72b72363ba45c1d9438a29751b342adc68ab903b
